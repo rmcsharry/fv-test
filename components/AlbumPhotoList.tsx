@@ -56,16 +56,16 @@ const AlbumPhotoList = () => {
                 handleOpen(selectedImage as string)
               }}
             />
-          <IconButton 
-            aria-label="close" 
-            onClick={handleClose} 
-            sx={{ 
-              position: 'absolute', 
-              top: 8, 
-              right: 8 
-            }}
-          >
-            <CloseIcon />
+            <IconButton
+              aria-label="close"
+              onClick={handleClose}
+              sx={{
+                position: 'absolute',
+                top: 8,
+                right: 8
+              }}
+            >
+              <CloseIcon />
             </IconButton>
           </Box>
         </Box>
