@@ -1,5 +1,5 @@
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
-import Posts from '../components/Posts';
+import Posts from '../components/PostList';
 import { getPosts } from '../services/getPosts';
 
 export const metadata = {

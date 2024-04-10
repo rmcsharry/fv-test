@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { Comment } from '../types/Comment';
-import { Box, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Comments = ({ comments }: { comments: Comment[] }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,17 +15,23 @@ const Comments = ({ comments }: { comments: Comment[] }) => {
   return (
     <>
       {comments && (
-        <Box>
-          <Typography onClick={handleClick}>{comments.length} comments</Typography>
-          <details open={isOpen}>
-            {isOpen && comments.map((comment) => (
-              <div key={comment.id}>
-                <h4>{comment.name}</h4>
-                <p>{comment.body}</p>
-              </div>
-            ))}
-          </details>
-        </Box>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+            >
+              <Typography>{comments.length} comments</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              {comments.map((comment) => (
+                <div key={comment.id}>
+                  <h4>{comment.name}</h4>
+                  <p>{comment.body}</p>
+                </div>
+              ))}
+            </AccordionDetails>
+          </Accordion>
       )}
     </>
   );
