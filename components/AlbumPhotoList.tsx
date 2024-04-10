@@ -5,8 +5,8 @@ import Grid from '@mui/material/Grid';
 import { getAlbumPhotos } from '../services/getAlbumPhotos';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Box, Modal } from '@mui/material';
-import { AlbumPhoto } from '../types/AlbumPhoto';
+import { Box, IconButton, Modal } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 const AlbumPhotoList = () => {
   const { data: albumphotos, error, isFetched } = useQuery({
@@ -46,15 +46,28 @@ const AlbumPhotoList = () => {
         aria-describedby="modal-modal-description"
       >
         <Box onClick={handleClose} sx={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Image src={selectedImage as string}
-            alt="selected"
-            width={600}
-            height={600}
-            onClick={(e) => {
-              e.stopPropagation();
-              handleOpen(selectedImage as string)
+          <Box sx={{ position: 'relative', display: 'inline-block' }}>
+            <Image src={selectedImage as string}
+              alt="selected"
+              width={600}
+              height={600}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleOpen(selectedImage as string)
+              }}
+            />
+          <IconButton 
+            aria-label="close" 
+            onClick={handleClose} 
+            sx={{ 
+              position: 'absolute', 
+              top: 8, 
+              right: 8 
             }}
-          />
+          >
+            <CloseIcon />
+            </IconButton>
+          </Box>
         </Box>
       </Modal>
     </main>
