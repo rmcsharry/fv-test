@@ -1,6 +1,6 @@
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
-import Posts from '../components/PostList';
-import { getPosts } from '../services/getPosts';
+import Posts from '../../components/PostList';
+import { getPosts } from '../../services/getPosts';
 
 export const metadata = {
   title: 'Example Feed of Posts',

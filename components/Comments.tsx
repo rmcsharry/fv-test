@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from 'react';
-import { Comment } from '../types/Comment';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Comment } from '../types/Comment';
 
 const Comments = ({ comments }: { comments: Comment[] }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,5 +1,5 @@
 import ClientLayout from './ClientLayout'
-import ReactQueryClientProvider from './utils/ReactQueryClientProvider'
+import ReactQueryClientProvider from '../utils/ReactQueryClientProvider'
 
 export const metadata = {
   title: 'Fanvue\'s Frontend coding challenge 💻',
