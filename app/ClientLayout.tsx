@@ -1,14 +1,13 @@
-import type { AppProps } from "next/app";
+"use client"
+
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import lightTheme from "../themes/lightTheme";
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider theme={lightTheme}>
       <CssBaseline />
-      <Component {...pageProps} />
+      {children}
     </ThemeProvider>
   );
 }
-
-export default MyApp;

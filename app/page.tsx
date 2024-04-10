@@ -1,14 +1,9 @@
-import type { NextPage } from "next";
-import Head from "next/head";
 import NextLink from "next/link";
 import { Paper, Box, Typography, Link, Grid } from "@mui/material";
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <div>
-      <Head>
-        <title></title>
-      </Head>
       <main>
         <Box textAlign={"center"} my={8}>
           <Typography component="h1" variant="h3">
