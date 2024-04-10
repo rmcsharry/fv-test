@@ -1,4 +1,6 @@
-import Posts from '../components/Posts v1';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import Posts from '../components/Posts';
+import { getPosts } from '../services/getPosts';
 
 export const metadata = {
   title: 'Example Feed of Posts',
@@ -6,10 +8,17 @@ export const metadata = {
 }
 
 const Feed = async () => {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['posts'],
+    queryFn: getPosts
+  });
   
   return (
     <main>
-      <Posts />
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <Posts />
+      </HydrationBoundary>
     </main>
   );
 };

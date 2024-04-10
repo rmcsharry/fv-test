@@ -1,6 +1,8 @@
+"use client"
+
 import { useState } from 'react';
 import { Comment } from '../types/Comment';
-import Posts from './Posts v1';
+import { Box, Typography } from '@mui/material';
 
 const Comments = ({ comments }: { comments: Comment[] }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,16 +13,19 @@ const Comments = ({ comments }: { comments: Comment[] }) => {
 
   return (
     <>
-      <Posts />
-      <details open={isOpen}>
-        <summary onClick={handleClick}>{comments.length} comments</summary>
-        {isOpen && comments.map((comment) => (
-          <div key={comment.id}>
-            <h4>{comment.name}</h4>
-            <p>{comment.body}</p>
-          </div>
-        ))}
-      </details>
+      {comments && (
+        <Box>
+          <Typography onClick={handleClick}>{comments.length} comments</Typography>
+          <details open={isOpen}>
+            {isOpen && comments.map((comment) => (
+              <div key={comment.id}>
+                <h4>{comment.name}</h4>
+                <p>{comment.body}</p>
+              </div>
+            ))}
+          </details>
+        </Box>
+      )}
     </>
   );
 };

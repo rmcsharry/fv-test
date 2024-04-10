@@ -1,16 +1,31 @@
-// Posts.tsx (server component)
-import { getPosts } from '../services/getPosts';
-import { Post } from '../types/Post';
+"use client"
 
-const Posts = async () => {
-  const posts: Post[] = await getPosts();
+import { useQuery } from '@tanstack/react-query';
+import { getPosts } from '../services/getPosts';
+import { Box, Paper, Typography } from '@mui/material';
+import Comments from './Comments';
+
+const Posts = () => {
+  const { data: posts, error, isFetched } = useQuery({
+    queryKey: ['posts'],
+    queryFn: getPosts
+  });
 
   return (
-    <div>
-      {posts.map((post) => (
-        <div key={post.id} dangerouslySetInnerHTML={{ __html: `<PostWithComments post=${JSON.stringify(post)} />` }} />
+    <main>
+      {posts?.length === 0 && <h1>Loading...</h1>}
+      {posts?.map((post) => (
+        <Box key={post.id} padding={2}>
+          <Paper sx={{padding: 2}}>
+            <Typography variant="h5">{post.title}</Typography>
+            <Typography>{post.body}</Typography>
+            
+              <Comments comments={post.comments} />
+            
+          </Paper>
+        </Box>
       ))}
-    </div>
+    </main>
   );
 };
 

@@ -5,6 +5,5 @@ export type Post = {
   id: number;
   title: string;
   body: string;
-  commentsCount?: number;
   comments: Comment[];
 }
